@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nick Nojiri — Full-stack systems that ship</title>
+  <meta name="description" content="Nick Nojiri builds end-to-end pipelines: Relay (prompt A/B deployment), SpotBot (reels to outings), and a resume improver. Rust, TypeScript, and Python." />
+  <meta property="og:title" content="Nick Nojiri — Full-stack systems that ship" />
+  <meta property="og:description" content="Pipelines that turn messy input into decisions. Relay, SpotBot, and Resume Improver." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <a href="#top" class="brand"><span class="dot"></span> Nick Nojiri</a>
+      <div class="nav-links">
+        <a href="#relay">Relay</a>
+        <a href="#spotbot">SpotBot</a>
+        <a href="#resume">Resume Improver</a>
+        <a href="#about">About</a>
+        <button class="theme-btn" id="theme" aria-label="Toggle color theme" title="Toggle theme">◐</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <span class="eyebrow mono">// full-stack engineer</span>
+      <h1>I build <span class="grad">pipelines that ship</span></h1>
+      <p class="lead">Systems that take messy input — prompts, reels, resumes — and turn it into something a team can act on. Each project below is a real data flow you can push data through.</p>
+      <div class="chips">
+        <span class="chip"><b>Rust</b> · <b>TypeScript</b> · <b>Python</b></span>
+        <span class="chip"><b>230+</b> tests across projects</span>
+        <span class="chip">CI on every repo</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ RELAY ============ -->
+  <section class="proj reveal" id="relay" style="--pc: var(--relay); --pc-bg: var(--relay-bg);">
+    <div class="wrap proj-grid">
+      <div>
+        <div class="proj-head">
+          <span class="proj-num mono">01</span>
+          <span class="badge featured">Featured</span>
+        </div>
+        <h2>Relay</h2>
+        <p class="tagline">A/B-test AI prompts in production and see which one actually wins.</p>
+        <p style="color: var(--text-dim);">Teams tweak prompts constantly, but which wording is better? Relay lets you author a system prompt, ship it through a gateway, split traffic with feature flags, and track cost and latency per version.</p>
+
+        <h4>Engineering decisions</h4>
+        <ul>
+          <li>Polyglot monorepo: a Rust flag engine for low-latency traffic splitting, a Python/FastAPI gateway for the model ecosystem, a TypeScript web app for the dashboard.</li>
+          <li>Wired with pnpm + Turborepo + Cargo so one command builds three languages.</li>
+          <li>Per-version cost and latency tracking, so "which prompt wins" is a number, not a hunch.</li>
+        </ul>
+
+        <div class="tags">
+          <span class="tag">Rust</span><span class="tag">TypeScript</span><span class="tag">Python</span>
+          <span class="tag">FastAPI</span><span class="tag">Turborepo</span><span class="tag">Cargo</span>
+        </div>
+
+        <div class="links">
+          <a class="btn solid" href="https://github.com/NickNojiri/relay" target="_blank" rel="noopener">View source ↗</a>
+          <button class="btn" onclick="relayFlip()">Run the demo →</button>
+        </div>
+      </div>
+
+      <div class="demo" aria-label="Relay interactive demo">
+        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label mono">relay · prompt-deployment</span></div>
+        <div class="demo-body">
+          <div class="pipe" id="relay-pipe">
+            <div class="node">Author prompt</div>
+            <span class="arrow">→</span>
+            <div class="node">Gateway<span class="nlang">py</span></div>
+            <span class="arrow">→</span>
+            <div class="node">Flag engine<span class="nlang">rs</span></div>
+            <span class="arrow">→</span>
+            <div class="node">Cost + latency<span class="nlang">ts</span></div>
+          </div>
+
+          <div class="flag-row">
+            <div>
+              <div style="font-size: 14px; font-weight: 600;">Feature flag: <span class="mono" style="color: var(--relay);">prompt_v2</span></div>
+              <div style="font-size: 12.5px; color: var(--text-mute);">Flip to route live traffic to version B</div>
+            </div>
+            <div class="switch" id="relay-switch" role="switch" aria-checked="false" tabindex="0"></div>
+          </div>
+
+          <div class="split-bar">
+            <div class="split-a" id="split-a" style="width: 90%;">A · 90%</div>
+            <div class="split-b" id="split-b" style="width: 10%;">B · 10%</div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric"><div class="k">Cost / 1k calls</div><div class="v" id="m-cost">$4.20</div></div>
+            <div class="metric"><div class="k">p95 latency</div><div class="v" id="m-lat">840ms</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPOTBOT ============ -->
+  <section class="proj reveal" id="spotbot" style="--pc: var(--spot); --pc-bg: var(--spot-bg);">
+    <div class="wrap proj-grid">
+      <div>
+        <div class="proj-head">
+          <span class="proj-num mono">02</span>
+          <span class="badge live">Live · 143 tests</span>
+        </div>
+        <h2>SpotBot</h2>
+        <p class="tagline">Turns the Instagram reels your friends share into places you actually go.</p>
+        <p style="color: var(--text-dim);">Your group chat is full of "we should go here!" reels nobody acts on. SpotBot reads the caption <em>and</em> the spoken audio, figures out the venue, time, and location, and posts a votable card in Discord.</p>
+
+        <h4>Engineering decisions</h4>
+        <ul>
+          <li>Local-first: Ollama for the LLM and OpenStreetMap for geocoding — no per-call API cost, runs offline.</li>
+          <li>faster-whisper transcribes reel audio, so a spot mentioned only out loud still gets captured.</li>
+          <li>7-stage ingestion pipeline (fetch → refine → geo → temporal → sink → recommend) with 143 offline tests.</li>
+        </ul>
+
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">Whisper</span>
+          <span class="tag">ChromaDB</span><span class="tag">Discord.py</span><span class="tag">Playwright</span>
+        </div>
+
+        <div class="links">
+          <a class="btn solid" href="https://github.com/NickNojiri/SocialAgent-Team10" target="_blank" rel="noopener">View source ↗</a>
+          <button class="btn" onclick="spotRun()">Paste a reel →</button>
+        </div>
+      </div>
+
+      <div class="demo" aria-label="SpotBot interactive demo">
+        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label mono">spotbot · #plans</span></div>
+        <div class="demo-body">
+          <div class="reel-input">
+            <input id="reel-url" value="instagram.com/reel/tacos-el-gordo" spellcheck="false" />
+            <button class="btn solid" onclick="spotRun()" style="flex: 0 0 auto;">Run</button>
+          </div>
+
+          <div class="stages" id="stages">
+            <div class="stage" data-i="0"><span class="ico">↓</span> Fetch reel + caption</div>
+            <div class="stage" data-i="1"><span class="ico">♪</span> Transcribe audio (whisper)</div>
+            <div class="stage" data-i="2"><span class="ico">✦</span> Refine with local LLM</div>
+            <div class="stage" data-i="3"><span class="ico">◎</span> Geo-enrich (OpenStreetMap)</div>
+          </div>
+
+          <div class="spot-card" id="spot-card">
+            <div class="sc-accent"></div>
+            <div class="sc-body">
+              <div class="sc-title">Tacos El Gordo</div>
+              <div class="sc-meta"><span>◎ Las Vegas Blvd</span><span>◷ open till 3am</span><span>$ tacos</span></div>
+              <div class="sc-votes">
+                <button class="vote" onclick="vote(this)">I'm in<span class="c">2</span></button>
+                <button class="vote" onclick="vote(this)">Maybe<span class="c">1</span></button>
+                <button class="vote" onclick="vote(this)">Pass<span class="c">0</span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESUME IMPROVER ============ -->
+  <section class="proj reveal" id="resume" style="--pc: var(--resume); --pc-bg: var(--resume-bg);">
+    <div class="wrap proj-grid">
+      <div>
+        <div class="proj-head">
+          <span class="proj-num mono">03</span>
+          <span class="badge wip">In progress</span>
+        </div>
+        <h2>Resume Improver</h2>
+        <p class="tagline">Scores a resume, then rewrites weak bullets with grounded suggestions.</p>
+        <p style="color: var(--text-dim);">Built on an MIT resume-to-score pipeline, extended into a full-stack improver: it extracts structured data from a PDF, scores it, then streams grounded rewrites of weak bullet points — with guards so it never invents experience you don't have.</p>
+
+        <h4>What's being built</h4>
+        <ul>
+          <li>Grounded rewrites: every suggestion is anchored to the original resume, with hallucination guards.</li>
+          <li>FastAPI + Server-Sent Events stream the rewrite token-by-token into a React diff view.</li>
+          <li>Exports a polished DOCX so the improved resume is ready to send.</li>
+        </ul>
+
+        <div class="tags">
+          <span class="tag">Python 3.11</span><span class="tag">FastAPI</span><span class="tag">SSE</span>
+          <span class="tag">React</span><span class="tag">DOCX</span><span class="tag">MIT base</span>
+        </div>
+
+        <div class="links">
+          <span class="btn btn-disabled" title="Repo goes public when the first cut lands">Source coming soon</span>
+          <button class="btn" onclick="resumeRewrite()">Watch a rewrite →</button>
+        </div>
+      </div>
+
+      <div class="demo" aria-label="Resume Improver interactive demo">
+        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label mono">resume-improver · rewrite</span></div>
+        <div class="demo-body">
+          <div style="font-size: 12px; color: var(--text-mute); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Original bullet</div>
+          <div class="bullet before">Worked on the backend team and helped with various tasks and features.</div>
+          <div style="font-size: 12px; color: var(--text-mute); margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.05em;">Grounded rewrite</div>
+          <div class="bullet after" id="rewrite"><span style="color: var(--text-mute);">Click "Watch a rewrite" to stream a suggestion…</span></div>
+
+          <div class="gauge-row">
+            <div class="gauge">
+              <svg width="78" height="78" viewBox="0 0 78 78">
+                <circle cx="39" cy="39" r="33" fill="none" stroke="var(--border)" stroke-width="7" />
+                <circle id="gauge-arc" cx="39" cy="39" r="33" fill="none" stroke="var(--resume)" stroke-width="7" stroke-linecap="round" stroke-dasharray="207" stroke-dashoffset="207" />
+              </svg>
+              <div class="num" id="gauge-num">—</div>
+            </div>
+            <div class="gtext">Bullet strength jumps once specifics, scope, and impact are added.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about reveal" id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <p>I'm Nick — I like building systems end to end, from a Rust hot path to the React view on top of it. These projects are my proof of work: polyglot, tested, and deployed rather than left in a notebook.</p>
+      <div class="links">
+        <a class="btn solid" href="https://github.com/NickNojiri" target="_blank" rel="noopener" style="--pc: var(--relay);">GitHub ↗</a>
+        <a class="btn" href="mailto:nickthe20@gmail.com" style="--pc: var(--relay);">Email me →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year"></span> Nick Nojiri</span>
+      <span class="mono">built from scratch — no framework, no build step</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
