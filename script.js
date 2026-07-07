@@ -133,3 +133,150 @@ function resumeRewrite() {
 
 /* kick the featured pipeline once on load so it feels alive */
 window.addEventListener("load", () => setTimeout(pulsePipe, 700));
+
+/* ================= reactive text & motion effects ================= */
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+/* ---------- typewriter eyebrow ---------- */
+const PHRASES = [
+  "full-stack engineer",
+  "rust · typescript · python",
+  "pipelines that ship",
+  "systems, end to end",
+];
+const typeEl = document.getElementById("type");
+if (typeEl && !reduceMotion) {
+  let pi = 0;
+  let ci = PHRASES[0].length;
+  let del = true;
+  const loop = () => {
+    if (del) {
+      ci--;
+      typeEl.textContent = PHRASES[pi].slice(0, ci);
+      if (ci === 0) {
+        del = false;
+        pi = (pi + 1) % PHRASES.length;
+        setTimeout(loop, 350);
+      } else setTimeout(loop, 28);
+    } else {
+      ci++;
+      typeEl.textContent = PHRASES[pi].slice(0, ci);
+      if (ci === PHRASES[pi].length) {
+        del = true;
+        setTimeout(loop, 2600);
+      } else setTimeout(loop, 55 + Math.random() * 45);
+    }
+  };
+  setTimeout(loop, 2800);
+}
+
+/* ---------- scramble-decode headings ---------- */
+const GLYPHS = "!<>-_\\/[]{}=+*^?#";
+function scramble(el) {
+  if (reduceMotion || el.dataset.busy) return;
+  el.dataset.busy = "1";
+  const orig = el.dataset.text || (el.dataset.text = el.textContent);
+  const total = orig.length * 3 + 12;
+  let frame = 0;
+  const tick = () => {
+    frame++;
+    const revealed = Math.floor((frame / total) * orig.length * 1.5);
+    el.textContent = orig
+      .split("")
+      .map((c, i) => {
+        if (c === " " || i < revealed) return c;
+        return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+      })
+      .join("");
+    if (revealed < orig.length) requestAnimationFrame(tick);
+    else {
+      el.textContent = orig;
+      delete el.dataset.busy;
+    }
+  };
+  tick();
+}
+const headings = document.querySelectorAll(".proj h2");
+headings.forEach((h) => h.addEventListener("mouseenter", () => scramble(h)));
+if (!reduceMotion) {
+  const scrambleIO = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          scramble(e.target);
+          scrambleIO.unobserve(e.target);
+        }
+      }),
+    { threshold: 0.6 }
+  );
+  headings.forEach((h) => scrambleIO.observe(h));
+}
+
+/* ---------- count-up stat ---------- */
+const countEl = document.getElementById("count-tests");
+if (countEl && !reduceMotion) {
+  const target = parseInt(countEl.dataset.target, 10);
+  countEl.textContent = "0";
+  const dur = 1600;
+  let t0 = null;
+  const step = (t) => {
+    if (!t0) t0 = t;
+    const p = Math.min((t - t0) / dur, 1);
+    countEl.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+    if (p < 1) requestAnimationFrame(step);
+  };
+  setTimeout(() => requestAnimationFrame(step), 500);
+}
+
+/* ---------- demo panels: 3d tilt + cursor spotlight ---------- */
+if (finePointer && !reduceMotion) {
+  document.querySelectorAll(".demo").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      card.style.setProperty("--mx", x + "px");
+      card.style.setProperty("--my", y + "px");
+      const rx = (y / r.height - 0.5) * -3.5;
+      const ry = (x / r.width - 0.5) * 3.5;
+      card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+  });
+}
+
+/* ---------- ambient glow drifts toward the mouse ---------- */
+if (finePointer && !reduceMotion) {
+  let glowTick = false;
+  window.addEventListener(
+    "mousemove",
+    (e) => {
+      if (glowTick) return;
+      glowTick = true;
+      requestAnimationFrame(() => {
+        document.body.style.setProperty("--gx", (e.clientX / innerWidth - 0.5) * 140 + "px");
+        document.body.style.setProperty("--gy", (e.clientY / innerHeight - 0.5) * 70 + "px");
+        glowTick = false;
+      });
+    },
+    { passive: true }
+  );
+}
+
+/* ---------- scrollspy: nav underline tracks the section ---------- */
+const navLinks = [...document.querySelectorAll(".nav-links a")];
+const spy = new IntersectionObserver(
+  (entries) =>
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        navLinks.forEach((a) =>
+          a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id)
+        );
+      }
+    }),
+  { rootMargin: "-30% 0px -60% 0px" }
+);
+document.querySelectorAll("section[id]").forEach((s) => spy.observe(s));

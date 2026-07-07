@@ -65,7 +65,8 @@ body::before {
   position: fixed;
   top: -20%; left: 50%;
   width: 900px; height: 700px;
-  transform: translateX(-50%);
+  transform: translate(calc(-50% + var(--gx, 0px)), var(--gy, 0px));
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   background: radial-gradient(closest-side, rgba(139, 131, 240, 0.16), transparent 70%);
   pointer-events: none; z-index: 0;
 }
@@ -82,8 +83,15 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .brand { font-weight: 600; letter-spacing: -0.01em; font-size: 15px; display: flex; align-items: center; gap: 9px; }
 .brand .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
 .nav-links { display: flex; align-items: center; gap: 24px; font-size: 14px; color: var(--text-dim); }
-.nav-links a { transition: color 0.2s; }
+.nav-links a { position: relative; transition: color 0.2s; }
 .nav-links a:hover { color: var(--text); }
+.nav-links a::after {
+  content: ""; position: absolute; left: 0; bottom: -5px; height: 2px; width: 100%;
+  border-radius: 2px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
+}
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--text); }
 .theme-btn {
   background: transparent; border: 1px solid var(--border); color: var(--text-dim);
   width: 34px; height: 34px; border-radius: 9px; cursor: pointer; font-size: 15px;
@@ -98,14 +106,21 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
   font-family: var(--mono); font-size: 13px; color: var(--accent);
   letter-spacing: 0.02em; margin-bottom: 18px; display: inline-flex; align-items: center; gap: 8px;
 }
+.hero .eyebrow .caret {
+  display: inline-block; width: 7px; height: 14px; background: var(--accent);
+  margin-left: 1px; animation: blink 1s step-end infinite;
+}
 .hero h1 {
   font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;
   font-weight: 600; margin-bottom: 20px;
 }
 .hero h1 .grad {
-  background: linear-gradient(120deg, var(--relay), var(--spot) 55%, var(--resume));
+  background: linear-gradient(120deg, var(--relay), var(--spot) 33%, var(--resume) 66%, var(--relay) 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  animation: shimmer 7s linear infinite;
 }
+@keyframes shimmer { to { background-position: 200% center; } }
 .hero p.lead { font-size: clamp(1.05rem, 2.4vw, 1.3rem); color: var(--text-dim); max-width: 620px; }
 .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .chip {
@@ -155,7 +170,15 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .demo {
   background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
   overflow: hidden; box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.6);
+  position: relative; transition: transform 0.18s ease-out, border-color 0.3s ease; will-change: transform;
 }
+.demo:hover { border-color: color-mix(in srgb, var(--pc, var(--accent)) 40%, var(--border)); }
+.demo::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  opacity: 0; transition: opacity 0.35s ease;
+  background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--pc, var(--accent)) 9%, transparent), transparent 60%);
+}
+.demo:hover::after { opacity: 1; }
 .demo-bar {
   display: flex; align-items: center; gap: 7px; padding: 11px 14px; border-bottom: 1px solid var(--border);
   background: var(--bg-soft);
@@ -245,4 +268,10 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
 /* reveal on scroll */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero h1 .grad { animation: none; }
+  .hero .eyebrow .caret { display: none; }
+  body::before { transition: none; }
+  .demo { transition: none; }
+}
