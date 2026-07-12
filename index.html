@@ -23,6 +23,7 @@
         <a href="#relay">Relay</a>
         <a href="#spotbot">SpotBot</a>
         <a href="#resume">Resume Improver</a>
+        <a href="#audionotes">AudioNotes</a>
         <a href="#about">About</a>
         <button class="theme-btn" id="theme" aria-label="Toggle color theme" title="Toggle theme">◐</button>
       </div>
@@ -217,6 +218,89 @@
             </div>
             <div class="gtext">Bullet strength jumps once specifics, scope, and impact are added.</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUDIONOTES ============ -->
+  <section class="proj reveal" id="audionotes" style="--pc: var(--audio); --pc-bg: var(--audio-bg);">
+    <div class="wrap proj-grid">
+      <div>
+        <div class="proj-head">
+          <span class="proj-num mono">04</span>
+          <span class="badge oss">Open source</span>
+        </div>
+        <h2>AudioNotes</h2>
+        <p class="tagline">Contributed fixes and features to a 2,200-star AI speech-to-notes platform.</p>
+        <p class="desc">AudioNotes turns audio and video into structured notes with FunASR and a local LLM. I worked through its backlog of open issues — root-causing the bugs that were blocking real users — then added a REST API and a GPU deployment path, each as its own reviewable pull request.</p>
+
+        <h4>What I contributed</h4>
+        <ul>
+          <li>Root-caused a streaming-response crash (<code>None</code> content in the final SSE chunk) that silently broke LLM note generation for every user.</li>
+          <li>Fixed a Windows login failure, chainlit/pydantic dependency incompatibilities, and missing English docs — 8+ open issues in total.</li>
+          <li>Shipped a token-secured REST API (<code>POST /api/v1/transcriptions</code>) and an optional NVIDIA GPU Docker deployment.</li>
+        </ul>
+
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Chainlit</span>
+          <span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">REST</span>
+        </div>
+
+        <div class="links">
+          <a class="btn solid" href="https://github.com/harry0703/AudioNotes" target="_blank" rel="noopener">View the project ↗</a>
+          <a class="btn" href="https://github.com/harry0703/AudioNotes/issues" target="_blank" rel="noopener">Browse the issues ↗</a>
+        </div>
+      </div>
+
+      <div class="demo" aria-label="AudioNotes contributions">
+        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label mono">audionotes · 6 pull requests</span></div>
+        <div class="demo-body">
+          <div class="pr-list">
+            <div class="pr-row">
+              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
+              <div class="pr-main">
+                <div class="pr-title">Fix streaming-response crash in note generation</div>
+                <div class="pr-issues"><span class="pr-issue">#40</span><span class="pr-issue">#32</span></div>
+              </div>
+            </div>
+            <div class="pr-row">
+              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
+              <div class="pr-main">
+                <div class="pr-title">Pin chainlit/pydantic; document auth secret</div>
+                <div class="pr-issues"><span class="pr-issue">#47</span><span class="pr-issue">#43</span><span class="pr-issue">#42</span><span class="pr-issue">#39</span><span class="pr-issue">#38</span></div>
+              </div>
+            </div>
+            <div class="pr-row">
+              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
+              <div class="pr-main">
+                <div class="pr-title">Fix login failure on Windows (USERNAME env var)</div>
+                <div class="pr-issues"><span class="pr-issue">#31</span></div>
+              </div>
+            </div>
+            <div class="pr-row">
+              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
+              <div class="pr-main">
+                <div class="pr-title">Add REST API for transcription + notes</div>
+                <div class="pr-issues"><span class="pr-issue">#41</span><span class="pr-issue new">new feature</span></div>
+              </div>
+            </div>
+            <div class="pr-row">
+              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
+              <div class="pr-main">
+                <div class="pr-title">Add optional NVIDIA GPU Docker deployment</div>
+                <div class="pr-issues"><span class="pr-issue">#49</span><span class="pr-issue">#45</span></div>
+              </div>
+            </div>
+            <div class="pr-row">
+              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
+              <div class="pr-main">
+                <div class="pr-title">Add English README + language switcher</div>
+                <div class="pr-issues"><span class="pr-issue new">docs</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="pr-foot">6 focused PRs · 8+ issues addressed</div>
         </div>
       </div>
     </div>
