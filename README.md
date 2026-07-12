@@ -23,6 +23,12 @@ Each project card has a live, self-contained demo (no backend calls):
 - **Resume Improver** — stream a grounded bullet rewrite token-by-token while a
   strength score climbs.
 
+## Open source
+
+| Project | Contribution |
+|---------|--------------|
+| [cve-bin-tool](https://github.com/ossf/cve-bin-tool) (OpenSSF) | Closed a three-year-open test-coverage gap: the Windows branch of the `inpath()` PATH lookup was invisible to Linux-only coverage CI. Added platform-independent tests that exercise both branches on any OS — [PR #5829](https://github.com/ossf/cve-bin-tool/pull/5829) *(under review)*. |
+
 ## Run locally
 
 Any static file server works. With Python:
