@@ -72,6 +72,27 @@ body::before {
 }
 [data-theme="light"] body::before { opacity: 0.5; }
 
+/* ---------- Scroll progress ---------- */
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60;
+  background: linear-gradient(90deg, var(--relay), var(--spot), var(--resume));
+  transform: scaleX(0); transform-origin: left; pointer-events: none;
+}
+
+/* ---------- Back to top ---------- */
+.to-top {
+  position: fixed; right: 22px; bottom: 22px; z-index: 55;
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid var(--border-hi); color: var(--text-dim);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(10px); font-size: 17px; cursor: pointer;
+  display: grid; place-items: center;
+  opacity: 0; visibility: hidden; transform: translateY(8px);
+  transition: opacity 0.25s, visibility 0.25s, transform 0.25s, color 0.2s, border-color 0.2s;
+}
+.to-top.show { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { color: var(--text); border-color: var(--accent); }
+
 /* ---------- Nav ---------- */
 nav {
   position: sticky; top: 0; z-index: 50;
@@ -146,6 +167,7 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .badge.live { background: var(--spot-bg); color: var(--spot); }
 .badge.wip { background: var(--resume-bg); color: var(--resume); }
 .proj h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); letter-spacing: -0.02em; font-weight: 600; margin: 10px 0 6px; }
+.proj .desc { color: var(--text-dim); }
 .proj .tagline { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 22px; }
 .proj h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-mute); margin: 22px 0 10px; font-weight: 600; }
 .proj ul { list-style: none; display: grid; gap: 10px; }
@@ -165,6 +187,7 @@ nav .wrap { display: flex; align-items: center; justify-content: space-between; 
 .btn.solid:hover { color: #fff; filter: brightness(1.08); }
 .btn-disabled { opacity: 0.55; cursor: not-allowed; }
 .btn-disabled:hover { transform: none; border-color: var(--border-hi); color: var(--text); }
+.btn.copied { border-color: var(--spot); color: var(--spot); }
 
 /* ---------- Demo panel ---------- */
 .demo {

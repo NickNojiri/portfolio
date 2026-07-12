@@ -42,5 +42,12 @@ No configuration needed; the site is fully static.
 ```
 index.html    all markup + content
 styles.css    dark-first design system, light-mode toggle
-script.js     the three interactive demos + scroll reveals
+script.js     demos + reactive effects (typewriter, scramble headings,
+              tilt/spotlight panels, scrollspy, scroll progress, count-up)
+ROADMAP.md    ideas for future versions
 ```
+
+## Live
+
+Hosted free on GitHub Pages: **https://nicknojiri.github.io/portfolio/**
+(auto-redeploys on every push to `main`)

@@ -8,10 +8,14 @@
   <meta property="og:title" content="Nick Nojiri — Full-stack systems that ship" />
   <meta property="og:description" content="Pipelines that turn messy input into decisions. Relay, SpotBot, and Resume Improver." />
   <meta property="og:type" content="website" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <meta property="og:url" content="https://nicknojiri.github.io/portfolio/" />
+  <meta name="theme-color" content="#0a0a0f" />
+  <link rel="canonical" href="https://nicknojiri.github.io/portfolio/" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Ccircle cx='32' cy='32' r='15' fill='%238b83f0'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
   <nav>
     <div class="wrap">
       <a href="#top" class="brand"><span class="dot"></span> Nick Nojiri</a>
@@ -48,7 +52,7 @@
         </div>
         <h2>Relay</h2>
         <p class="tagline">A/B-test AI prompts in production and see which one actually wins.</p>
-        <p style="color: var(--text-dim);">Teams tweak prompts constantly, but which wording is better? Relay lets you author a system prompt, ship it through a gateway, split traffic with feature flags, and track cost and latency per version.</p>
+        <p class="desc">Teams tweak prompts constantly, but which wording is better? Relay lets you author a system prompt, ship it through a gateway, split traffic with feature flags, and track cost and latency per version.</p>
 
         <h4>Engineering decisions</h4>
         <ul>
@@ -64,7 +68,7 @@
 
         <div class="links">
           <a class="btn solid" href="https://github.com/NickNojiri/relay" target="_blank" rel="noopener">View source ↗</a>
-          <button class="btn" onclick="relayFlip()">Run the demo →</button>
+          <button class="btn" id="relay-run">Run the demo →</button>
         </div>
       </div>
 
@@ -113,7 +117,7 @@
         </div>
         <h2>SpotBot</h2>
         <p class="tagline">Turns the Instagram reels your friends share into places you actually go.</p>
-        <p style="color: var(--text-dim);">Your group chat is full of "we should go here!" reels nobody acts on. SpotBot reads the caption <em>and</em> the spoken audio, figures out the venue, time, and location, and posts a votable card in Discord.</p>
+        <p class="desc">Your group chat is full of "we should go here!" reels nobody acts on. SpotBot reads the caption <em>and</em> the spoken audio, figures out the venue, time, and location, and posts a votable card in Discord.</p>
 
         <h4>Engineering decisions</h4>
         <ul>
@@ -129,7 +133,7 @@
 
         <div class="links">
           <a class="btn solid" href="https://github.com/NickNojiri/SocialAgent-Team10" target="_blank" rel="noopener">View source ↗</a>
-          <button class="btn" onclick="spotRun()">Paste a reel →</button>
+          <button class="btn js-spot-run">Paste a reel →</button>
         </div>
       </div>
 
@@ -137,8 +141,8 @@
         <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label mono">spotbot · #plans</span></div>
         <div class="demo-body">
           <div class="reel-input">
-            <input id="reel-url" value="instagram.com/reel/tacos-el-gordo" spellcheck="false" />
-            <button class="btn solid" onclick="spotRun()" style="flex: 0 0 auto;">Run</button>
+            <input id="reel-url" value="instagram.com/reel/tacos-el-gordo" spellcheck="false" aria-label="Reel URL to ingest" />
+            <button class="btn solid js-spot-run" style="flex: 0 0 auto;">Run</button>
           </div>
 
           <div class="stages" id="stages">
@@ -151,12 +155,12 @@
           <div class="spot-card" id="spot-card">
             <div class="sc-accent"></div>
             <div class="sc-body">
-              <div class="sc-title">Tacos El Gordo</div>
+              <div class="sc-title" id="sc-title">Tacos El Gordo</div>
               <div class="sc-meta"><span>◎ Las Vegas Blvd</span><span>◷ open till 3am</span><span>$ tacos</span></div>
               <div class="sc-votes">
-                <button class="vote" onclick="vote(this)">I'm in<span class="c">2</span></button>
-                <button class="vote" onclick="vote(this)">Maybe<span class="c">1</span></button>
-                <button class="vote" onclick="vote(this)">Pass<span class="c">0</span></button>
+                <button class="vote">I'm in<span class="c">2</span></button>
+                <button class="vote">Maybe<span class="c">1</span></button>
+                <button class="vote">Pass<span class="c">0</span></button>
               </div>
             </div>
           </div>
@@ -175,7 +179,7 @@
         </div>
         <h2>Resume Improver</h2>
         <p class="tagline">Scores a resume, then rewrites weak bullets with grounded suggestions.</p>
-        <p style="color: var(--text-dim);">Built on an MIT resume-to-score pipeline, extended into a full-stack improver: it extracts structured data from a PDF, scores it, then streams grounded rewrites of weak bullet points — with guards so it never invents experience you don't have.</p>
+        <p class="desc">Built on an MIT resume-to-score pipeline, extended into a full-stack improver: it extracts structured data from a PDF, scores it, then streams grounded rewrites of weak bullet points — with guards so it never invents experience you don't have.</p>
 
         <h4>What's being built</h4>
         <ul>
@@ -191,7 +195,7 @@
 
         <div class="links">
           <span class="btn btn-disabled" title="Repo goes public when the first cut lands">Source coming soon</span>
-          <button class="btn" onclick="resumeRewrite()">Watch a rewrite →</button>
+          <button class="btn" id="resume-run">Watch a rewrite →</button>
         </div>
       </div>
 
@@ -226,6 +230,7 @@
       <div class="links">
         <a class="btn solid" href="https://github.com/NickNojiri" target="_blank" rel="noopener" style="--pc: var(--relay);">GitHub ↗</a>
         <a class="btn" href="mailto:nickthe20@gmail.com" style="--pc: var(--relay);">Email me →</a>
+        <button class="btn" id="copy-email" style="--pc: var(--spot);">Copy email</button>
       </div>
     </div>
   </section>
@@ -237,6 +242,9 @@
     </div>
   </footer>
 
+  <button class="to-top" id="to-top" aria-label="Back to top">↑</button>
+
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
   <script src="script.js"></script>
 </body>
 </html>
