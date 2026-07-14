@@ -25,11 +25,16 @@ Each project card has a live, self-contained demo (no backend calls):
 
 ## Open source
 
+Open pull requests across production open-source projects, spanning AI security, LLM tooling, and web performance.
+
 | Project | Contribution |
 |---------|--------------|
-| [garak](https://github.com/NVIDIA/garak) (NVIDIA — LLM vulnerability scanner) | Added parametrized unit tests for the known-bad-signature detectors that flag when a model emits antivirus/spam/phishing test strings (EICAR / GTUBE / GTphish), covering case-insensitive matching and cross-signature distinctness — [PR #1956](https://github.com/NVIDIA/garak/pull/1956) *(under review)*. |
+| [claude-code-action](https://github.com/anthropics/claude-code-action) (Anthropic) | Three security-hardening PRs: redact leaked GitHub user-to-server (`ghu_`) tokens ([#1502](https://github.com/anthropics/claude-code-action/pull/1502)), require a trusted author before the `@claude` trigger fires ([#1503](https://github.com/anthropics/claude-code-action/pull/1503)), and strip HTML comments after entity decoding in the input sanitizer ([#1504](https://github.com/anthropics/claude-code-action/pull/1504)). |
+| [garak](https://github.com/NVIDIA/garak) (NVIDIA — LLM vulnerability scanner) | Parametrized unit tests for the known-bad-signature detectors that flag when a model emits antivirus/spam/phishing test strings (EICAR / GTUBE / GTphish), covering case-insensitive matching and cross-signature distinctness — [PR #1956](https://github.com/NVIDIA/garak/pull/1956). |
+| [Lighthouse](https://github.com/GoogleChrome/lighthouse) (Google) | Smoke-test coverage for CSS nesting in unused-css-rules ([#17127](https://github.com/GoogleChrome/lighthouse/pull/17127)), clamping negative wasted-bytes in the unused-CSS audit ([#17131](https://github.com/GoogleChrome/lighthouse/pull/17131)), and surfacing plugins in the report footer ([#17125](https://github.com/GoogleChrome/lighthouse/pull/17125)). |
+| [lh-scorecalc](https://github.com/paulirish/lh-scorecalc) (Paul Irish) | Clamp metric values when switching device type ([#55](https://github.com/paulirish/lh-scorecalc/pull/55)). |
 | [AudioNotes](https://github.com/harry0703/AudioNotes) (2.2k★ audio→notes app) | Six pull requests: root-caused an Ollama streaming crash, fixed Windows login, pinned breaking dependencies, and added a REST API plus optional NVIDIA-GPU Docker support. |
-| [cve-bin-tool](https://github.com/ossf/cve-bin-tool) (OpenSSF) | Closed a three-year-open test-coverage gap: the Windows branch of the `inpath()` PATH lookup was invisible to Linux-only coverage CI. Added platform-independent tests that exercise both branches on any OS — [PR #5829](https://github.com/ossf/cve-bin-tool/pull/5829) *(under review)*. |
+| [cve-bin-tool](https://github.com/ossf/cve-bin-tool) (OpenSSF) | Closed a three-year-open test-coverage gap: the Windows branch of the `inpath()` PATH lookup was invisible to Linux-only coverage CI. Added platform-independent tests that exercise both branches on any OS — [PR #5829](https://github.com/ossf/cve-bin-tool/pull/5829). |
 
 ## Run locally
 
