@@ -53,11 +53,13 @@ No configuration needed; the site is fully static.
 ## Structure
 
 ```
-index.html    all markup + content
-styles.css    dark-first design system, light-mode toggle
-script.js     demos + reactive effects (typewriter, scramble headings,
-              tilt/spotlight panels, scrollspy, scroll progress, count-up)
-ROADMAP.md    ideas for future versions
+index.html          all markup + content
+styles.css          dark-first design system, light-mode toggle
+script.js           demos + reactive effects (typewriter, scramble headings,
+                    tilt/spotlight panels, scrollspy, scroll progress, count-up)
+ROADMAP.md          ideas for future versions
+DESIGN.md           v2 visual direction (remix.run impact × Notion restraint)
+REDESIGN-PROMPT.md  paste-ready brief to hand the v2 build to a coding agent
 ```
 
 ## Live
