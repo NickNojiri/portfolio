@@ -27,6 +27,8 @@ Each project card has a live, self-contained demo (no backend calls):
 
 | Project | Contribution |
 |---------|--------------|
+| [garak](https://github.com/NVIDIA/garak) (NVIDIA — LLM vulnerability scanner) | Added parametrized unit tests for the known-bad-signature detectors that flag when a model emits antivirus/spam/phishing test strings (EICAR / GTUBE / GTphish), covering case-insensitive matching and cross-signature distinctness. *(PR pending submission)* |
+| [AudioNotes](https://github.com/harry0703/AudioNotes) (2.2k★ audio→notes app) | Six pull requests: root-caused an Ollama streaming crash, fixed Windows login, pinned breaking dependencies, and added a REST API plus optional NVIDIA-GPU Docker support. |
 | [cve-bin-tool](https://github.com/ossf/cve-bin-tool) (OpenSSF) | Closed a three-year-open test-coverage gap: the Windows branch of the `inpath()` PATH lookup was invisible to Linux-only coverage CI. Added platform-independent tests that exercise both branches on any OS — [PR #5829](https://github.com/ossf/cve-bin-tool/pull/5829) *(under review)*. |
 
 ## Run locally
