@@ -10,3 +10,6 @@ Thumbs.db
 node_modules/
 dist/
 .cache/
+
+# private work log / resume source — never publish
+WORK-LOG.md

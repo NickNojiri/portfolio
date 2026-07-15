@@ -53,10 +53,12 @@ No configuration needed; the site is fully static.
 ## Structure
 
 ```
-index.html          all markup + content
-styles.css          dark-first design system, light-mode toggle
+index.html          five acts: 3 project demos + open-source ledger + also-built
+styles.css          design system, self-hosted type, auras, light/dark
 script.js           demos + reactive effects (typewriter, scramble headings,
                     tilt/spotlight panels, scrollspy, scroll progress, count-up)
+fonts/              self-hosted woff2 — Bricolage Grotesque, IBM Plex Sans,
+                    JetBrains Mono (OFL); no CDN, keeps the site buildless
 ROADMAP.md          ideas for future versions
 DESIGN.md           v2 visual direction (remix.run impact × Notion restraint)
 REDESIGN-PROMPT.md  paste-ready brief to hand the v2 build to a coding agent

@@ -1,30 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nick Nojiri — Full-stack systems that ship</title>
-  <meta name="description" content="Nick Nojiri builds end-to-end pipelines: Relay (prompt A/B deployment), SpotBot (reels to outings), and a resume improver. Rust, TypeScript, and Python." />
-  <meta property="og:title" content="Nick Nojiri — Full-stack systems that ship" />
-  <meta property="og:description" content="Pipelines that turn messy input into decisions. Relay, SpotBot, and Resume Improver." />
+  <title>Nick Nojiri — pipelines that ship</title>
+  <meta name="description" content="Nick Nojiri builds end-to-end systems: Relay (prompt A/B deployment), SpotBot (reels to outings), a resume improver, and 15 open-source PRs across Lighthouse, garak, and more. Rust, TypeScript, Python, C++." />
+  <meta property="og:title" content="Nick Nojiri — pipelines that ship" />
+  <meta property="og:description" content="Full-stack systems that turn messy input into decisions. Relay, SpotBot, Resume Improver, and a real open-source footprint." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://nicknojiri.github.io/portfolio/" />
   <meta name="theme-color" content="#0a0a0f" />
   <link rel="canonical" href="https://nicknojiri.github.io/portfolio/" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Ccircle cx='32' cy='32' r='15' fill='%238b83f0'/%3E%3C/svg%3E" />
+  <link rel="preload" href="fonts/bricolage-grotesque-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="progress" id="progress" aria-hidden="true"></div>
+
   <nav>
     <div class="wrap">
-      <a href="#top" class="brand"><span class="dot"></span> Nick Nojiri</a>
+      <a href="#top" class="brand"><span class="mark" aria-hidden="true"></span> nick nojiri</a>
       <div class="nav-links">
-        <a href="#relay">Relay</a>
-        <a href="#spotbot">SpotBot</a>
-        <a href="#resume">Resume Improver</a>
-        <a href="#audionotes">AudioNotes</a>
-        <a href="#about">About</a>
+        <a href="#relay">relay</a>
+        <a href="#spotbot">spotbot</a>
+        <a href="#resume">resume</a>
+        <a href="#oss">open source</a>
+        <a href="#about" class="nav-cta">about</a>
         <button class="theme-btn" id="theme" aria-label="Toggle color theme" title="Toggle theme">◐</button>
       </div>
     </div>
@@ -32,23 +35,25 @@
 
   <header class="hero" id="top">
     <div class="wrap">
-      <span class="eyebrow mono">// <span id="type">full-stack engineer</span><span class="caret" aria-hidden="true"></span></span>
-      <h1>I build <span class="grad">pipelines that ship</span></h1>
-      <p class="lead">Systems that take messy input — prompts, reels, resumes — and turn it into something a team can act on. Each project below is a real data flow you can push data through.</p>
+      <span class="eyebrow">// <span id="type">full-stack engineer</span><span class="caret" aria-hidden="true"></span></span>
+      <h1>I build <span class="sig">pipelines that ship</span></h1>
+      <p class="lead">Systems that take messy input — prompts, reels, resumes — and turn it into something a team can act on. Polyglot, tested, and deployed rather than left in a notebook.</p>
       <div class="chips">
-        <span class="chip"><b>Rust</b> · <b>TypeScript</b> · <b>Python</b></span>
+        <span class="chip"><b>Rust</b> · <b>TypeScript</b> · <b>Python</b> · <b>C++</b></span>
         <span class="chip"><b><span id="count-tests" data-target="230">230</span>+</b> tests across projects</span>
-        <span class="chip">CI on every repo</span>
+        <span class="chip"><b><span id="count-prs" data-target="15">15</span></b> open-source PRs · <b>1</b> merged into Anthropic</span>
       </div>
+      <div class="signal" aria-hidden="true"><span class="pulse"></span></div>
     </div>
   </header>
 
-  <!-- ============ RELAY ============ -->
-  <section class="proj reveal" id="relay" style="--pc: var(--relay); --pc-bg: var(--relay-bg);">
-    <div class="wrap proj-grid">
+  <!-- ============ 01 · RELAY ============ -->
+  <section class="act" id="relay" style="--pc: var(--violet); --pc-bg: var(--violet-bg);">
+    <span class="aura" aria-hidden="true"></span>
+    <div class="wrap act-grid reveal">
       <div>
-        <div class="proj-head">
-          <span class="proj-num mono">01</span>
+        <div class="act-head">
+          <span class="idx mono">act 01</span>
           <span class="badge featured">Featured</span>
         </div>
         <h2>Relay</h2>
@@ -57,7 +62,7 @@
 
         <h4>Engineering decisions</h4>
         <ul>
-          <li>Polyglot monorepo: a Rust flag engine for low-latency traffic splitting, a Python/FastAPI gateway for the model ecosystem, a TypeScript web app for the dashboard.</li>
+          <li>Polyglot monorepo: a Rust flag engine for low-latency traffic splitting, a Python/FastAPI gateway for the model ecosystem, a TypeScript dashboard.</li>
           <li>Wired with pnpm + Turborepo + Cargo so one command builds three languages.</li>
           <li>Per-version cost and latency tracking, so "which prompt wins" is a number, not a hunch.</li>
         </ul>
@@ -74,7 +79,7 @@
       </div>
 
       <div class="demo" aria-label="Relay interactive demo">
-        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label mono">relay · prompt-deployment</span></div>
+        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label">relay · prompt-deployment</span></div>
         <div class="demo-body">
           <div class="pipe" id="relay-pipe">
             <div class="node">Author prompt</div>
@@ -88,8 +93,8 @@
 
           <div class="flag-row">
             <div>
-              <div style="font-size: 14px; font-weight: 600;">Feature flag: <span class="mono" style="color: var(--relay);">prompt_v2</span></div>
-              <div style="font-size: 12.5px; color: var(--text-mute);">Flip to route live traffic to version B</div>
+              <div class="fl-t">Feature flag: <span class="mono" style="color: var(--violet);">prompt_v2</span></div>
+              <div class="fl-s">Flip to route live traffic to version B</div>
             </div>
             <div class="switch" id="relay-switch" role="switch" aria-checked="false" tabindex="0"></div>
           </div>
@@ -108,12 +113,13 @@
     </div>
   </section>
 
-  <!-- ============ SPOTBOT ============ -->
-  <section class="proj reveal" id="spotbot" style="--pc: var(--spot); --pc-bg: var(--spot-bg);">
-    <div class="wrap proj-grid">
+  <!-- ============ 02 · SPOTBOT ============ -->
+  <section class="act" id="spotbot" style="--pc: var(--teal); --pc-bg: var(--teal-bg);">
+    <span class="aura" aria-hidden="true" style="right: auto; left: -12%;"></span>
+    <div class="wrap act-grid reveal">
       <div>
-        <div class="proj-head">
-          <span class="proj-num mono">02</span>
+        <div class="act-head">
+          <span class="idx mono">act 02</span>
           <span class="badge live">Live · 143 tests</span>
         </div>
         <h2>SpotBot</h2>
@@ -139,7 +145,7 @@
       </div>
 
       <div class="demo" aria-label="SpotBot interactive demo">
-        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label mono">spotbot · #plans</span></div>
+        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label">spotbot · #plans</span></div>
         <div class="demo-body">
           <div class="reel-input">
             <input id="reel-url" value="instagram.com/reel/tacos-el-gordo" spellcheck="false" aria-label="Reel URL to ingest" />
@@ -147,10 +153,10 @@
           </div>
 
           <div class="stages" id="stages">
-            <div class="stage" data-i="0"><span class="ico">↓</span> Fetch reel + caption</div>
-            <div class="stage" data-i="1"><span class="ico">♪</span> Transcribe audio (whisper)</div>
-            <div class="stage" data-i="2"><span class="ico">✦</span> Refine with local LLM</div>
-            <div class="stage" data-i="3"><span class="ico">◎</span> Geo-enrich (OpenStreetMap)</div>
+            <div class="stage"><span class="ico">↓</span> Fetch reel + caption</div>
+            <div class="stage"><span class="ico">♪</span> Transcribe audio (whisper)</div>
+            <div class="stage"><span class="ico">✦</span> Refine with local LLM</div>
+            <div class="stage"><span class="ico">◎</span> Geo-enrich (OpenStreetMap)</div>
           </div>
 
           <div class="spot-card" id="spot-card">
@@ -170,12 +176,13 @@
     </div>
   </section>
 
-  <!-- ============ RESUME IMPROVER ============ -->
-  <section class="proj reveal" id="resume" style="--pc: var(--resume); --pc-bg: var(--resume-bg);">
-    <div class="wrap proj-grid">
+  <!-- ============ 03 · RESUME IMPROVER ============ -->
+  <section class="act" id="resume" style="--pc: var(--coral); --pc-bg: var(--coral-bg);">
+    <span class="aura" aria-hidden="true"></span>
+    <div class="wrap act-grid reveal">
       <div>
-        <div class="proj-head">
-          <span class="proj-num mono">03</span>
+        <div class="act-head">
+          <span class="idx mono">act 03</span>
           <span class="badge wip">In progress</span>
         </div>
         <h2>Resume Improver</h2>
@@ -201,18 +208,18 @@
       </div>
 
       <div class="demo" aria-label="Resume Improver interactive demo">
-        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label mono">resume-improver · rewrite</span></div>
+        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label">resume-improver · rewrite</span></div>
         <div class="demo-body">
-          <div style="font-size: 12px; color: var(--text-mute); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;">Original bullet</div>
+          <div class="rz-label">Original bullet</div>
           <div class="bullet before">Worked on the backend team and helped with various tasks and features.</div>
-          <div style="font-size: 12px; color: var(--text-mute); margin: 14px 0 8px; text-transform: uppercase; letter-spacing: 0.05em;">Grounded rewrite</div>
-          <div class="bullet after" id="rewrite"><span style="color: var(--text-mute);">Click "Watch a rewrite" to stream a suggestion…</span></div>
+          <div class="rz-label" style="margin-top: 14px;">Grounded rewrite</div>
+          <div class="bullet after" id="rewrite"><span style="color: var(--mute);">Click "Watch a rewrite" to stream a suggestion…</span></div>
 
           <div class="gauge-row">
             <div class="gauge">
-              <svg width="78" height="78" viewBox="0 0 78 78">
-                <circle cx="39" cy="39" r="33" fill="none" stroke="var(--border)" stroke-width="7" />
-                <circle id="gauge-arc" cx="39" cy="39" r="33" fill="none" stroke="var(--resume)" stroke-width="7" stroke-linecap="round" stroke-dasharray="207" stroke-dashoffset="207" />
+              <svg width="80" height="80" viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="33" fill="none" stroke="var(--line)" stroke-width="7" />
+                <circle id="gauge-arc" cx="40" cy="40" r="33" fill="none" stroke="var(--coral)" stroke-width="7" stroke-linecap="round" stroke-dasharray="207" stroke-dashoffset="207" />
               </svg>
               <div class="num" id="gauge-num">—</div>
             </div>
@@ -223,98 +230,88 @@
     </div>
   </section>
 
-  <!-- ============ AUDIONOTES ============ -->
-  <section class="proj reveal" id="audionotes" style="--pc: var(--audio); --pc-bg: var(--audio-bg);">
-    <div class="wrap proj-grid">
-      <div>
-        <div class="proj-head">
-          <span class="proj-num mono">04</span>
-          <span class="badge oss">Open source</span>
-        </div>
-        <h2>AudioNotes</h2>
-        <p class="tagline">Contributed fixes and features to a 2,200-star AI speech-to-notes platform.</p>
-        <p class="desc">AudioNotes turns audio and video into structured notes with FunASR and a local LLM. I worked through its backlog of open issues — root-causing the bugs that were blocking real users — then added a REST API and a GPU deployment path, each as its own reviewable pull request.</p>
-
-        <h4>What I contributed</h4>
-        <ul>
-          <li>Root-caused a streaming-response crash (<code>None</code> content in the final SSE chunk) that silently broke LLM note generation for every user.</li>
-          <li>Fixed a Windows login failure, chainlit/pydantic dependency incompatibilities, and missing English docs — 8+ open issues in total.</li>
-          <li>Shipped a token-secured REST API (<code>POST /api/v1/transcriptions</code>) and an optional NVIDIA GPU Docker deployment.</li>
-        </ul>
-
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Chainlit</span>
-          <span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">REST</span>
-        </div>
-
-        <div class="links">
-          <a class="btn solid" href="https://github.com/harry0703/AudioNotes" target="_blank" rel="noopener">View the project ↗</a>
-          <a class="btn" href="https://github.com/harry0703/AudioNotes/issues" target="_blank" rel="noopener">Browse the issues ↗</a>
-        </div>
+  <!-- ============ 04 · OPEN SOURCE ============ -->
+  <section class="act bordered" id="oss" style="--pc: var(--signal); --pc-bg: var(--signal-bg);">
+    <span class="aura" aria-hidden="true" style="right: auto; left: 50%; transform: translateX(-50%); top: 0;"></span>
+    <div class="wrap reveal">
+      <div class="oss-head">
+        <span class="eyebrow" style="--accent: var(--signal);">// act 04 — open source</span>
+        <h2>Fifteen pull requests, six upstreams, one merged into Anthropic.</h2>
+        <p>Every change reproduced empirically before a line was written, scoped to what a maintainer already wanted, and framed honestly about its limits — across AI security, LLM tooling, and web performance.</p>
       </div>
 
-      <div class="demo" aria-label="AudioNotes contributions">
-        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label mono">audionotes · 6 pull requests</span></div>
-        <div class="demo-body">
-          <div class="pr-list">
-            <div class="pr-row">
-              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
-              <div class="pr-main">
-                <div class="pr-title">Fix streaming-response crash in note generation</div>
-                <div class="pr-issues"><span class="pr-issue">#40</span><span class="pr-issue">#32</span></div>
-              </div>
-            </div>
-            <div class="pr-row">
-              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
-              <div class="pr-main">
-                <div class="pr-title">Pin chainlit/pydantic; document auth secret</div>
-                <div class="pr-issues"><span class="pr-issue">#47</span><span class="pr-issue">#43</span><span class="pr-issue">#42</span><span class="pr-issue">#39</span><span class="pr-issue">#38</span></div>
-              </div>
-            </div>
-            <div class="pr-row">
-              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
-              <div class="pr-main">
-                <div class="pr-title">Fix login failure on Windows (USERNAME env var)</div>
-                <div class="pr-issues"><span class="pr-issue">#31</span></div>
-              </div>
-            </div>
-            <div class="pr-row">
-              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
-              <div class="pr-main">
-                <div class="pr-title">Add REST API for transcription + notes</div>
-                <div class="pr-issues"><span class="pr-issue">#41</span><span class="pr-issue new">new feature</span></div>
-              </div>
-            </div>
-            <div class="pr-row">
-              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
-              <div class="pr-main">
-                <div class="pr-title">Add optional NVIDIA GPU Docker deployment</div>
-                <div class="pr-issues"><span class="pr-issue">#49</span><span class="pr-issue">#45</span></div>
-              </div>
-            </div>
-            <div class="pr-row">
-              <svg class="pr-ico" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M7.177 3.073 9.573.677A.25.25 0 0 1 10 .854v4.792a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354zM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5zm-2.25.75a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25zM11 2.5h-1V4h1a1 1 0 0 1 1 1v5.628a2.251 2.251 0 1 0 1.5 0V5A2.5 2.5 0 0 0 11 2.5zm1 10.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM3.75 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5z"/></svg>
-              <div class="pr-main">
-                <div class="pr-title">Add English README + language switcher</div>
-                <div class="pr-issues"><span class="pr-issue new">docs</span></div>
-              </div>
-            </div>
-          </div>
-          <div class="pr-foot">6 focused PRs · 8+ issues addressed</div>
+      <div class="ledger">
+        <div class="lrow">
+          <div class="repo"><span class="rn">claude-code-action</span><span class="ro">Anthropic</span></div>
+          <div class="what">Redact leaked <code>ghu_</code> tokens in the log sanitizer, gate the <code>@claude</code> trigger to trusted authors, and strip HTML comments after entity-decode.</div>
+          <div class="stat"><span class="pill merged">1 merged · 3 PRs</span></div>
+        </div>
+        <div class="lrow">
+          <div class="repo"><span class="rn">lighthouse</span><span class="ro">Google</span></div>
+          <div class="what">Smoke coverage for CSS nesting in unused-css-rules, clamp negative wasted-bytes, and surface plugins in the report footer.</div>
+          <div class="stat"><span class="pill open">3 open</span></div>
+        </div>
+        <div class="lrow">
+          <div class="repo"><span class="rn">garak</span><span class="ro">NVIDIA</span></div>
+          <div class="what">Parametrized tests for the known-bad-signature detectors — EICAR / GTUBE / GTphish — covering case-insensitivity and cross-signature distinctness.</div>
+          <div class="stat"><span class="pill open">1 open</span></div>
+        </div>
+        <div class="lrow">
+          <div class="repo"><span class="rn">lh-scorecalc</span><span class="ro">Paul Irish</span></div>
+          <div class="what">Clamp metric values when switching device type, root-caused via Playwright where no test harness existed.</div>
+          <div class="stat"><span class="pill open">1 open</span></div>
+        </div>
+        <div class="lrow">
+          <div class="repo"><span class="rn">AudioNotes</span><span class="ro">2.2k★</span></div>
+          <div class="what">Six PRs: an Ollama stream-crash fix, Windows login fix, dependency pinning, a REST API, and optional NVIDIA-GPU Docker support.</div>
+          <div class="stat"><span class="pill open">6 open</span></div>
+        </div>
+        <div class="lrow">
+          <div class="repo"><span class="rn">cve-bin-tool</span><span class="ro">OpenSSF</span></div>
+          <div class="what">Closed a three-year test-coverage gap: exercise both the Windows and POSIX branches of <code>inpath()</code> on any OS.</div>
+          <div class="stat"><span class="pill open">1 open</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 · ALSO BUILT ============ -->
+  <section class="act bordered" id="also" style="--pc: var(--violet); --pc-bg: var(--violet-bg);">
+    <div class="wrap reveal">
+      <div class="also-head">
+        <span class="eyebrow">// act 05 — also built</span>
+        <h2>Shorter proofs of work.</h2>
+      </div>
+      <div class="also">
+        <div class="card">
+          <div class="ct">WindowDash</div>
+          <div class="ck">C++ · Win32</div>
+          <p>A real-time system resource monitor in low-level Windows systems programming — a fourth language in the stack.</p>
+        </div>
+        <div class="card">
+          <div class="ct">Print-usage scraper</div>
+          <div class="ck">Python · Selenium</div>
+          <p>A scraper feeding print-per-hour analytics, shipped in a real support-operations context at CSULB.</p>
+        </div>
+        <div class="card">
+          <div class="ct">Competitive programming</div>
+          <div class="ck">ICPC · 2025–26</div>
+          <p>ICPC SoCal Regional 2025–26 — 41st of 68 teams. Algorithms under a clock, as a team.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============ ABOUT ============ -->
-  <section class="about reveal" id="about">
-    <div class="wrap">
-      <h2>About</h2>
-      <p>I'm Nick — I like building systems end to end, from a Rust hot path to the React view on top of it. These projects are my proof of work: polyglot, tested, and deployed rather than left in a notebook.</p>
-      <div class="links">
-        <a class="btn solid" href="https://github.com/NickNojiri" target="_blank" rel="noopener" style="--pc: var(--relay);">GitHub ↗</a>
-        <a class="btn" href="mailto:nickthe20@gmail.com" style="--pc: var(--relay);">Email me →</a>
-        <button class="btn" id="copy-email" style="--pc: var(--spot);">Copy email</button>
+  <section class="act about" id="about">
+    <div class="wrap reveal">
+      <span class="eyebrow">// about</span>
+      <h2>Systems, end to end.</h2>
+      <p>I'm Nick — I like building from the Rust hot path to the React view on top of it. These projects are my proof of work: polyglot, tested, and deployed rather than left in a notebook.</p>
+      <div class="links" style="--pc: var(--violet);">
+        <a class="btn solid" href="https://github.com/NickNojiri" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn" href="mailto:nickthe20@gmail.com">Email me →</a>
+        <button class="btn" id="copy-email">Copy email</button>
       </div>
     </div>
   </section>
