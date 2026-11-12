@@ -1,331 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nick Nojiri — pipelines that ship</title>
-  <meta name="description" content="Nick Nojiri builds end-to-end systems: Relay (prompt A/B deployment), SpotBot (reels to outings), a resume improver, and 15 open-source PRs across Lighthouse, garak, and more. Rust, TypeScript, Python, C++." />
-  <meta property="og:title" content="Nick Nojiri — pipelines that ship" />
-  <meta property="og:description" content="Full-stack systems that turn messy input into decisions. Relay, SpotBot, Resume Improver, and a real open-source footprint." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nicknojiri.github.io/portfolio/" />
-  <meta name="theme-color" content="#0a0a0f" />
-  <link rel="canonical" href="https://nicknojiri.github.io/portfolio/" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0f'/%3E%3Ccircle cx='32' cy='32' r='15' fill='%238b83f0'/%3E%3C/svg%3E" />
-  <link rel="preload" href="fonts/bricolage-grotesque-var.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nick Nojiri · ML Infrastructure &amp; Evaluation</title>
+<meta name="description" content="Nick Nojiri. CS at CSULB, May 2027. Merged PRs to Lighthouse and claude-code-action, and SpotBot, a Discord agent that turns shared reels into plans.">
+<meta property="og:title" content="Nick Nojiri">
+<meta property="og:description" content="ML Infrastructure &amp; Evaluation. Open source, SpotBot, current work.">
+<meta property="og:url" content="https://nicknojiri.github.io/portfolio/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#E4E2DC">
+<link rel="canonical" href="https://nicknojiri.github.io/portfolio/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121417'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='30' text-anchor='middle' fill='%23F6F6F3'%3ENN%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="fonts/inter-tight-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="progress" id="progress" aria-hidden="true"></div>
+<main id="vp" class="vp" tabindex="-1" aria-label="Portfolio">
+<div id="drag" class="drag">
+<div id="cam" class="cam">
+<div id="sheet" class="sheet">
+<div id="grid" class="grid">
 
-  <nav>
-    <div class="wrap">
-      <a href="#top" class="brand"><span class="mark" aria-hidden="true"></span> nick nojiri</a>
-      <div class="nav-links">
-        <a href="#relay">relay</a>
-        <a href="#spotbot">spotbot</a>
-        <a href="#resume">resume</a>
-        <a href="#oss">open source</a>
-        <a href="#about" class="nav-cta">about</a>
-        <button class="theme-btn" id="theme" aria-label="Toggle color theme" title="Toggle theme">◐</button>
-      </div>
-    </div>
-  </nav>
+<section class="sec full" id="intro" data-label="Intro">
+<div class="masthead">
+<div class="who">
+<h1>Nick<br>Nojiri</h1>
+<p class="role">ML Infrastructure &amp; Evaluation<br>CSULB, May 2027 · Long Beach, CA</p>
+</div>
+<nav class="toplinks" aria-label="Profiles">
+<a href="https://github.com/NickNojiri">GitHub</a>
+<a href="mailto:nickthe20@gmail.com">Email</a>
+</nav>
+</div>
+<button class="zoomhit" type="button" aria-label="Zoom into intro"></button>
+</section>
 
-  <header class="hero" id="top">
-    <div class="wrap">
-      <span class="eyebrow">// <span id="type">full-stack engineer</span><span class="caret" aria-hidden="true"></span></span>
-      <h1>I build <span class="sig">pipelines that ship</span></h1>
-      <p class="lead">Systems that take messy input — prompts, reels, resumes — and turn it into something a team can act on. Polyglot, tested, and deployed rather than left in a notebook.</p>
-      <div class="chips">
-        <span class="chip"><b>Rust</b> · <b>TypeScript</b> · <b>Python</b> · <b>C++</b></span>
-        <span class="chip"><b><span id="count-tests" data-target="230">230</span>+</b> tests across projects</span>
-        <span class="chip"><b><span id="count-prs" data-target="15">15</span></b> open-source PRs · <b>1</b> merged into Anthropic</span>
-      </div>
-      <div class="signal" aria-hidden="true"><span class="pulse"></span></div>
-    </div>
-  </header>
+<section class="sec full" id="open-source" data-label="Open source">
+<div class="body">
+<h2><span class="num">01</span> Open source</h2>
+<ul class="prs">
+<li><span class="tag ok">MERGED</span><a class="repo" href="https://github.com/GoogleChrome/lighthouse/pull/17125">GoogleChrome/lighthouse #17125</a><span class="what">Show plugins in the report footer</span></li>
+<li><span class="tag ok">MERGED</span><a class="repo" href="https://github.com/anthropics/claude-code-action/pull/1502">anthropics/claude-code-action #1502</a><span class="what">Redact ghu_ tokens in the sanitizer</span></li>
+<li><span class="tag ok">MERGED</span><a class="repo" href="https://github.com/anthropics/claude-code-action/pull/1539">anthropics/claude-code-action #1539</a><span class="what">Collapse empty path segments in branch_name_template</span></li>
+<li><span class="tag ok">MERGED</span><a class="repo" href="https://github.com/paulirish/lh-scorecalc/pull/55">paulirish/lh-scorecalc #55</a><span class="what">Clamp metric values when switching device type</span></li>
+<li><span class="tag">REVIEW</span><a class="repo" href="https://github.com/NVIDIA/garak/pull/1956">NVIDIA/garak #1956</a><span class="what">Unit tests for the known-bad-signature detectors</span></li>
+<li><span class="tag">REVIEW</span><a class="repo" href="https://github.com/ossf/cve-bin-tool/pull/5829">ossf/cve-bin-tool #5829</a><span class="what">Cover the Windows and POSIX branches of inpath()</span></li>
+<li><span class="tag">REVIEW</span><a class="repo" href="https://github.com/anthropics/claude-code-action/pull/1503">anthropics/claude-code-action #1503</a><span class="what">Require a trusted author for the @claude trigger</span></li>
+<li><span class="tag">REVIEW</span><a class="repo" href="https://github.com/anthropics/claude-code-action/pull/1504">anthropics/claude-code-action #1504</a><span class="what">Strip HTML comments after decoding entities</span></li>
+<li><span class="tag">REVIEW</span><a class="repo" href="https://github.com/anthropics/claude-code-action/pull/1524">anthropics/claude-code-action #1524</a><span class="what">Make --permission-mode in claude_args take effect</span></li>
+</ul>
+</div>
+<button class="zoomhit" type="button" aria-label="Zoom into Open source"></button>
+</section>
 
-  <!-- ============ 01 · RELAY ============ -->
-  <section class="act" id="relay" style="--pc: var(--violet); --pc-bg: var(--violet-bg);">
-    <span class="aura" aria-hidden="true"></span>
-    <div class="wrap act-grid reveal">
-      <div>
-        <div class="act-head">
-          <span class="idx mono">act 01</span>
-          <span class="badge featured">Featured</span>
-        </div>
-        <h2>Relay</h2>
-        <p class="tagline">A/B-test AI prompts in production and see which one actually wins.</p>
-        <p class="desc">Teams tweak prompts constantly, but which wording is better? Relay lets you author a system prompt, ship it through a gateway, split traffic with feature flags, and track cost and latency per version.</p>
+<section class="sec full" id="spotbot" data-label="SpotBot">
+<div class="body">
+<h2><span class="num">02</span> <a class="plain" href="https://nicknojiri.github.io/SocialAgent-Team10/">SpotBot</a></h2>
+<a class="lede" href="https://github.com/NickNojiri/SocialAgent-Team10/blob/main/docs/results/2026-10-27-evaluation-report.pdf">Discord agent that turns shared Instagram reels into votable spot cards. It reads the caption and the spoken audio.</a>
+<dl class="facts">
+<div><dt>Venue accuracy</dt><dd>46.3% to 58.3% on a held-out 185-reel test split, +12.0 pts, p = 0.0025</dd></div>
+<div><dt>Testing</dt><dd>1,336 offline tests passing, plus an attack suite in CI</dd></div>
+<div><dt>Pipeline</dt><dd>Playwright, faster-whisper, Ollama, OpenStreetMap, ChromaDB, FastAPI, Docker Compose</dd></div>
+<div><dt>My part</dt><dd>Architecture and platform: pipeline orchestration, multi-tenant auth, CI, deployment</dd></div>
+</dl>
+<div class="links">
+<a href="https://nicknojiri.github.io/SocialAgent-Team10/">Live site</a>
+<a href="https://github.com/NickNojiri/SocialAgent-Team10/blob/main/docs/results/2026-10-27-evaluation-report.pdf">Evaluation report</a>
+<a href="https://github.com/NickNojiri/SocialAgent-Team10">Source</a>
+</div>
+</div>
+<button class="zoomhit" type="button" aria-label="Zoom into SpotBot"></button>
+</section>
 
-        <h4>Engineering decisions</h4>
-        <ul>
-          <li>Polyglot monorepo: a Rust flag engine for low-latency traffic splitting, a Python/FastAPI gateway for the model ecosystem, a TypeScript dashboard.</li>
-          <li>Wired with pnpm + Turborepo + Cargo so one command builds three languages.</li>
-          <li>Per-version cost and latency tracking, so "which prompt wins" is a number, not a hunch.</li>
-        </ul>
+<section class="sec" id="current-work" data-label="Current work">
+<div class="body">
+<h2><span class="num">03</span> Current work</h2>
+<div class="items">
+<div><h3>Calibrated Decision Gateway</h3><p>Vendor-neutral gateway for decision models with guaranteed error rates. In progress.</p></div>
+<div><h3>TFT Meta as a Network</h3><p>PageRank and random walks over Teamfight Tactics Set 18, plus an economy layer. Team of 6, in progress.</p></div>
+<div><h3>Kanto Wildbound</h3><p>Open-world creature sandbox in the browser with original monsters. In progress.</p></div>
+</div>
+</div>
+<button class="zoomhit" type="button" aria-label="Zoom into Current work"></button>
+</section>
 
-        <div class="tags">
-          <span class="tag">Rust</span><span class="tag">TypeScript</span><span class="tag">Python</span>
-          <span class="tag">FastAPI</span><span class="tag">Turborepo</span><span class="tag">Cargo</span>
-        </div>
+<section class="sec" id="background" data-label="Background">
+<div class="body">
+<h2><span class="num">04</span> Background</h2>
+<div class="pairs">
+<div><h3>Bioformer benchmark</h3><p>+0.43 score shift from task-balanced reweighting across 15 BLURB datasets</p></div>
+<div><h3>ICPC SoCal 2025–26</h3><p>41 of 68, C++</p></div>
+<div><h3>Education</h3><p>CSULB, B.S. Computer Science, 2027. Orange Coast College, A.S. Computer Science</p></div>
+<div><h3>Stack</h3><p>Python, TypeScript, C++, Java, FastAPI, Playwright, Docker, ChromaDB, Ollama</p></div>
+</div>
+</div>
+<button class="zoomhit" type="button" aria-label="Zoom into Background"></button>
+</section>
 
-        <div class="links">
-          <a class="btn solid" href="https://github.com/NickNojiri/relay" target="_blank" rel="noopener">View source ↗</a>
-          <button class="btn" id="relay-run">Run the demo →</button>
-        </div>
-      </div>
+<section class="sec full" id="contact" data-label="Contact">
+<div class="contact">
+<h2><span class="num">05</span> Contact</h2>
+<div class="biglinks">
+<a href="mailto:nickthe20@gmail.com">Email</a>
+<a href="https://github.com/NickNojiri">GitHub</a>
+</div>
+</div>
+<button class="zoomhit" type="button" aria-label="Zoom into Contact"></button>
+</section>
 
-      <div class="demo" aria-label="Relay interactive demo">
-        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label">relay · prompt-deployment</span></div>
-        <div class="demo-body">
-          <div class="pipe" id="relay-pipe">
-            <div class="node">Author prompt</div>
-            <span class="arrow">→</span>
-            <div class="node">Gateway<span class="nlang">py</span></div>
-            <span class="arrow">→</span>
-            <div class="node">Flag engine<span class="nlang">rs</span></div>
-            <span class="arrow">→</span>
-            <div class="node">Cost + latency<span class="nlang">ts</span></div>
-          </div>
+</div>
+</div>
+</div>
+</div>
 
-          <div class="flag-row">
-            <div>
-              <div class="fl-t">Feature flag: <span class="mono" style="color: var(--violet);">prompt_v2</span></div>
-              <div class="fl-s">Flip to route live traffic to version B</div>
-            </div>
-            <div class="switch" id="relay-switch" role="switch" aria-checked="false" tabindex="0"></div>
-          </div>
-
-          <div class="split-bar">
-            <div class="split-a" id="split-a" style="width: 90%;">A · 90%</div>
-            <div class="split-b" id="split-b" style="width: 10%;">B · 10%</div>
-          </div>
-
-          <div class="metrics">
-            <div class="metric"><div class="k">Cost / 1k calls</div><div class="v" id="m-cost">$4.20</div></div>
-            <div class="metric"><div class="k">p95 latency</div><div class="v" id="m-lat">840ms</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 02 · SPOTBOT ============ -->
-  <section class="act" id="spotbot" style="--pc: var(--teal); --pc-bg: var(--teal-bg);">
-    <span class="aura" aria-hidden="true" style="right: auto; left: -12%;"></span>
-    <div class="wrap act-grid reveal">
-      <div>
-        <div class="act-head">
-          <span class="idx mono">act 02</span>
-          <span class="badge live">Live · 143 tests</span>
-        </div>
-        <h2>SpotBot</h2>
-        <p class="tagline">Turns the Instagram reels your friends share into places you actually go.</p>
-        <p class="desc">Your group chat is full of "we should go here!" reels nobody acts on. SpotBot reads the caption <em>and</em> the spoken audio, figures out the venue, time, and location, and posts a votable card in Discord.</p>
-
-        <h4>Engineering decisions</h4>
-        <ul>
-          <li>Local-first: Ollama for the LLM and OpenStreetMap for geocoding — no per-call API cost, runs offline.</li>
-          <li>faster-whisper transcribes reel audio, so a spot mentioned only out loud still gets captured.</li>
-          <li>7-stage ingestion pipeline (fetch → refine → geo → temporal → sink → recommend) with 143 offline tests.</li>
-        </ul>
-
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">Whisper</span>
-          <span class="tag">ChromaDB</span><span class="tag">Discord.py</span><span class="tag">Playwright</span>
-        </div>
-
-        <div class="links">
-          <a class="btn solid" href="https://github.com/NickNojiri/SocialAgent-Team10" target="_blank" rel="noopener">View source ↗</a>
-          <button class="btn js-spot-run">Paste a reel →</button>
-        </div>
-      </div>
-
-      <div class="demo" aria-label="SpotBot interactive demo">
-        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label">spotbot · #plans</span></div>
-        <div class="demo-body">
-          <div class="reel-input">
-            <input id="reel-url" value="instagram.com/reel/tacos-el-gordo" spellcheck="false" aria-label="Reel URL to ingest" />
-            <button class="btn solid js-spot-run" style="flex: 0 0 auto;">Run</button>
-          </div>
-
-          <div class="stages" id="stages">
-            <div class="stage"><span class="ico">↓</span> Fetch reel + caption</div>
-            <div class="stage"><span class="ico">♪</span> Transcribe audio (whisper)</div>
-            <div class="stage"><span class="ico">✦</span> Refine with local LLM</div>
-            <div class="stage"><span class="ico">◎</span> Geo-enrich (OpenStreetMap)</div>
-          </div>
-
-          <div class="spot-card" id="spot-card">
-            <div class="sc-accent"></div>
-            <div class="sc-body">
-              <div class="sc-title" id="sc-title">Tacos El Gordo</div>
-              <div class="sc-meta"><span>◎ Las Vegas Blvd</span><span>◷ open till 3am</span><span>$ tacos</span></div>
-              <div class="sc-votes">
-                <button class="vote">I'm in<span class="c">2</span></button>
-                <button class="vote">Maybe<span class="c">1</span></button>
-                <button class="vote">Pass<span class="c">0</span></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 03 · RESUME IMPROVER ============ -->
-  <section class="act" id="resume" style="--pc: var(--coral); --pc-bg: var(--coral-bg);">
-    <span class="aura" aria-hidden="true"></span>
-    <div class="wrap act-grid reveal">
-      <div>
-        <div class="act-head">
-          <span class="idx mono">act 03</span>
-          <span class="badge wip">In progress</span>
-        </div>
-        <h2>Resume Improver</h2>
-        <p class="tagline">Scores a resume, then rewrites weak bullets with grounded suggestions.</p>
-        <p class="desc">Built on an MIT resume-to-score pipeline, extended into a full-stack improver: it extracts structured data from a PDF, scores it, then streams grounded rewrites of weak bullet points — with guards so it never invents experience you don't have.</p>
-
-        <h4>What's being built</h4>
-        <ul>
-          <li>Grounded rewrites: every suggestion is anchored to the original resume, with hallucination guards.</li>
-          <li>FastAPI + Server-Sent Events stream the rewrite token-by-token into a React diff view.</li>
-          <li>Exports a polished DOCX so the improved resume is ready to send.</li>
-        </ul>
-
-        <div class="tags">
-          <span class="tag">Python 3.11</span><span class="tag">FastAPI</span><span class="tag">SSE</span>
-          <span class="tag">React</span><span class="tag">DOCX</span><span class="tag">MIT base</span>
-        </div>
-
-        <div class="links">
-          <span class="btn btn-disabled" title="Repo goes public when the first cut lands">Source coming soon</span>
-          <button class="btn" id="resume-run">Watch a rewrite →</button>
-        </div>
-      </div>
-
-      <div class="demo" aria-label="Resume Improver interactive demo">
-        <div class="demo-bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="label">resume-improver · rewrite</span></div>
-        <div class="demo-body">
-          <div class="rz-label">Original bullet</div>
-          <div class="bullet before">Worked on the backend team and helped with various tasks and features.</div>
-          <div class="rz-label" style="margin-top: 14px;">Grounded rewrite</div>
-          <div class="bullet after" id="rewrite"><span style="color: var(--mute);">Click "Watch a rewrite" to stream a suggestion…</span></div>
-
-          <div class="gauge-row">
-            <div class="gauge">
-              <svg width="80" height="80" viewBox="0 0 80 80">
-                <circle cx="40" cy="40" r="33" fill="none" stroke="var(--line)" stroke-width="7" />
-                <circle id="gauge-arc" cx="40" cy="40" r="33" fill="none" stroke="var(--coral)" stroke-width="7" stroke-linecap="round" stroke-dasharray="207" stroke-dashoffset="207" />
-              </svg>
-              <div class="num" id="gauge-num">—</div>
-            </div>
-            <div class="gtext">Bullet strength jumps once specifics, scope, and impact are added.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 04 · OPEN SOURCE ============ -->
-  <section class="act bordered" id="oss" style="--pc: var(--signal); --pc-bg: var(--signal-bg);">
-    <span class="aura" aria-hidden="true" style="right: auto; left: 50%; transform: translateX(-50%); top: 0;"></span>
-    <div class="wrap reveal">
-      <div class="oss-head">
-        <span class="eyebrow" style="--accent: var(--signal);">// act 04 — open source</span>
-        <h2>Fifteen pull requests, six upstreams, one merged into Anthropic.</h2>
-        <p>Every change reproduced empirically before a line was written, scoped to what a maintainer already wanted, and framed honestly about its limits — across AI security, LLM tooling, and web performance.</p>
-      </div>
-
-      <div class="ledger">
-        <div class="lrow">
-          <div class="repo"><span class="rn">claude-code-action</span><span class="ro">Anthropic</span></div>
-          <div class="what">Redact leaked <code>ghu_</code> tokens in the log sanitizer, gate the <code>@claude</code> trigger to trusted authors, and strip HTML comments after entity-decode.</div>
-          <div class="stat"><span class="pill merged">1 merged · 3 PRs</span></div>
-        </div>
-        <div class="lrow">
-          <div class="repo"><span class="rn">lighthouse</span><span class="ro">Google</span></div>
-          <div class="what">Smoke coverage for CSS nesting in unused-css-rules, clamp negative wasted-bytes, and surface plugins in the report footer.</div>
-          <div class="stat"><span class="pill open">3 open</span></div>
-        </div>
-        <div class="lrow">
-          <div class="repo"><span class="rn">garak</span><span class="ro">NVIDIA</span></div>
-          <div class="what">Parametrized tests for the known-bad-signature detectors — EICAR / GTUBE / GTphish — covering case-insensitivity and cross-signature distinctness.</div>
-          <div class="stat"><span class="pill open">1 open</span></div>
-        </div>
-        <div class="lrow">
-          <div class="repo"><span class="rn">lh-scorecalc</span><span class="ro">Paul Irish</span></div>
-          <div class="what">Clamp metric values when switching device type, root-caused via Playwright where no test harness existed.</div>
-          <div class="stat"><span class="pill open">1 open</span></div>
-        </div>
-        <div class="lrow">
-          <div class="repo"><span class="rn">AudioNotes</span><span class="ro">2.2k★</span></div>
-          <div class="what">Six PRs: an Ollama stream-crash fix, Windows login fix, dependency pinning, a REST API, and optional NVIDIA-GPU Docker support.</div>
-          <div class="stat"><span class="pill open">6 open</span></div>
-        </div>
-        <div class="lrow">
-          <div class="repo"><span class="rn">cve-bin-tool</span><span class="ro">OpenSSF</span></div>
-          <div class="what">Closed a three-year test-coverage gap: exercise both the Windows and POSIX branches of <code>inpath()</code> on any OS.</div>
-          <div class="stat"><span class="pill open">1 open</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 05 · ALSO BUILT ============ -->
-  <section class="act bordered" id="also" style="--pc: var(--violet); --pc-bg: var(--violet-bg);">
-    <div class="wrap reveal">
-      <div class="also-head">
-        <span class="eyebrow">// act 05 — also built</span>
-        <h2>Shorter proofs of work.</h2>
-      </div>
-      <div class="also">
-        <div class="card">
-          <div class="ct">WindowDash</div>
-          <div class="ck">C++ · Win32</div>
-          <p>A real-time system resource monitor in low-level Windows systems programming — a fourth language in the stack.</p>
-        </div>
-        <div class="card">
-          <div class="ct">Print-usage scraper</div>
-          <div class="ck">Python · Selenium</div>
-          <p>A scraper feeding print-per-hour analytics, shipped in a real support-operations context at CSULB.</p>
-        </div>
-        <div class="card">
-          <div class="ct">Competitive programming</div>
-          <div class="ck">ICPC · 2025–26</div>
-          <p>ICPC SoCal Regional 2025–26 — 41st of 68 teams. Algorithms under a clock, as a team.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="act about" id="about">
-    <div class="wrap reveal">
-      <span class="eyebrow">// about</span>
-      <h2>Systems, end to end.</h2>
-      <p>I'm Nick — I like building from the Rust hot path to the React view on top of it. These projects are my proof of work: polyglot, tested, and deployed rather than left in a notebook.</p>
-      <div class="links" style="--pc: var(--violet);">
-        <a class="btn solid" href="https://github.com/NickNojiri" target="_blank" rel="noopener">GitHub ↗</a>
-        <a class="btn" href="mailto:nickthe20@gmail.com">Email me →</a>
-        <button class="btn" id="copy-email">Copy email</button>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      <span>© <span id="year"></span> Nick Nojiri</span>
-      <span class="mono">built from scratch — no framework, no build step</span>
-    </div>
-  </footer>
-
-  <button class="to-top" id="to-top" aria-label="Back to top">↑</button>
-
-  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
-  <script src="script.js"></script>
+<div class="bar" id="bar" hidden>
+<button class="ctl" id="prev" type="button" aria-label="Previous section"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="ctl label" id="label" type="button" aria-label="Show whole page">Overview</button>
+<button class="ctl" id="next" type="button" aria-label="Next section"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
+<p class="sr-only" id="live" aria-live="polite"></p>
+</main>
+<script src="script.js"></script>
 </body>
 </html>
